@@ -446,7 +446,7 @@ plugin_dir() {
 RECEIVER_PKGS="python-libarchive-c keyutils"
 receiver_libs_installed() {
   python3 -c 'from libarchive import stream_reader' >/dev/null 2>&1 \
-    && [[ -e /usr/lib/libkeyutils.so.1 ]]
+    && [[ -n $(ldconfig -p 2>/dev/null | grep "libkeyutils.so.1") ]]
 }
 
 # The identity this computer presents to Apple devices: its certificate and

@@ -1,0 +1,7 @@
+#!/bin/sh
+# Stand-in for pacman's `vercmp` on Debian/Ubuntu (bin/omdrop calls it to compare the
+# radio backend's contract version). Prints -1, 0 or 1 like the original.
+# Install as ~/.local/bin/vercmp.
+if dpkg --compare-versions "$1" lt "$2"; then echo -1
+elif dpkg --compare-versions "$1" gt "$2"; then echo 1
+else echo 0; fi

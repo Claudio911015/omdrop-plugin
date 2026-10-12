@@ -1,0 +1,7 @@
+#!/bin/sh
+# Wrapper to install as ~/.local/bin/omdrop instead of the symlink `omdrop setup` makes.
+# omdrop needs python3 >= 3.11 (tomllib) and `iw`, which lives in /usr/sbin; a conda
+# python earlier in PATH (often 3.8) or a PATH without sbin breaks it. Adjust the path
+# to your checkout.
+exec env PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:$PATH" \
+  "$HOME/path/to/omdrop-plugin/bin/omdrop" "$@"
